@@ -39,7 +39,7 @@ export function CryptoTable() {
   ];
 
   return (
-    <section className=" rounded-xl animate-fade-up animate-duration-[4000ms]">
+    <section className=" rounded-2xl animate-fade-up animate-duration-[4000ms]">
       <div className="w-full bg-black bg-opacity-20 rounded-lg p-5">
         {/* Header */}
         <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-4 items-center gap-4">
