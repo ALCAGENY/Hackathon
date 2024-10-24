@@ -1,70 +1,72 @@
-import { Textos } from "../../UI/Textos";
 import { ComponentA } from "../../UI/ComponentA";
-import { BiTransfer } from "react-icons/bi";
 
 export function PublicacionesPrestador() {
   return (
     <>
       <ComponentA>
-        <section className="bg-black bg-opacity-20 rounded-lg px-8 py-10 md:px-24 md:py-16">
-          <div>
-            <Textos
-              className="text-white text-2xl md:text-3xl font-medium text-center"
-              Texto="Prestamos"
-            />
-          </div>
-
-          <section className="mt-8 md:mt-10">
-            <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-              {/* CARD UNO */}
-              <div className="flex-1 p-5">
-                <div className="bg-black bg-opacity-25 rounded-lg flex flex-col justify-center items-center h-full p-6">
-                  <Textos
-                    className="text-white text-sm font-medium text-center"
-                    Texto="Invierte el nivel 1"
-                  />
-                  <Textos
-                    className="text-white text-sm font-medium text-center"
-                    Texto="$500.00"
-                  />
-                </div>
+        <div className="">
+          {/* Contenedor principal */}
+          <div className="bg-black bg-opacity-20 p-8 rounded-lg shadow-lg text-white">
+            {/* Primer Bloque */}
+            <div className="flex justify-between items-center mb-4">
+              <div className="flex items-center space-x-2">
+                <p className="text-lg">Invierte en nivel 1.</p>
+                <select className="bg-green-500 text-white p-2 rounded-lg">
+                  <option value="500">₹ 500</option>
+                  {/* Puedes agregar más opciones si es necesario */}
+                </select>
               </div>
-
-              {/* CARD DOS */}
-              <div className="flex-1 p-5">
-                <div className="bg-black bg-opacity-25 rounded-lg flex justify-center items-center h-full p-6">
-                  <BiTransfer className="text-2xl text-white" />
-                </div>
+              <div className="flex items-center space-x-2">
+                <p className="text-lg">Recibe el 20%</p>
+                
+                <p>BTC</p>
               </div>
-
-              {/* CARD TRES */}
-              <div className="flex-1 p-5">
-                <div className="bg-black bg-opacity-25 rounded-lg flex flex-col justify-center items-center h-full p-6">
-                  <Textos
-                    className="text-white text-sm font-medium text-center"
-                    Texto="Recibe el 20%"
-                  />
-                  <Textos
-                    className="text-white text-xs font-medium text-center"
-                    Texto="(MENOS EL 5% DE COMISION)"
-                  />
-                </div>
-              </div>
-
-              {/* CARD CUATRO */}
-              <div className="flex-1 p-5">
-                <div className="bg-black bg-opacity-25 rounded-lg flex justify-center items-center h-full p-6">
-                  <button className="w-full bg-black rounded-md p-2">
-                    <Textos
-                      className="text-white text-sm font-medium text-center"
-                      Texto="Deseas Crear Esta Publicacion"
-                    />
-                  </button>
-                </div>
-              </div>
+              <button className="bg-green-500 text-white px-4 py-2 rounded-lg">
+                Go, MicroCurrencies
+              </button>
             </div>
-          </section>
-        </section>
+
+            {/* Segundo Bloque - Formulario */}
+            <div className="bg-black bg-opacity-10 p-6 rounded-lg">
+              <h2 className="text-center text-xl mb-4">Get Started Free</h2>
+              <p className="text-center mb-6">The Future in Crypto Currencies</p>
+              <form>
+                <div className="mb-4">
+                  <label className="block  mb-2">Nombre</label>
+                  <input
+                    type="text"
+                    className="w-full p-2 bg-green-900 bg-opacity-40 rounded-lg"
+                    placeholder="Tu nombre"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block mb-2">Cantidad</label>
+                  <input
+                    type="number"
+                    className="w-full p-2 bg-green-900 bg-opacity-40 rounded-lg"
+                    placeholder="Cantidad"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block mb-2">Tiempo de Pago</label>
+                  <input
+                    type="text"
+                    className="w-full p-2 bg-green-900 bg-opacity-40 rounded-lg"
+                    placeholder="Tiempo de Pago"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block mb-2">Interes Visto</label>
+                  <input
+                    type="text"
+                    className="w-full p-2 bg-green-900 bg-opacity-40 rounded-lg"
+                    placeholder="Interes Visto"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </ComponentA>
     </>
   );

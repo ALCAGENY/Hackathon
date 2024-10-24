@@ -32,7 +32,7 @@ export function CardsHome() {
            <div className="flex justify-end mt-4">
            <section className="text-end">
             <Textos className="text-white text-sm font-medium" Texto="Monto $500.00" />
-            <Textos className="text-white text-sm font-medium" Texto="12 Meses" />
+            <Textos className="text-white text-sm font-medium" Texto="2 semanas" />
             <Textos className="text-white text-sm font-medium" Texto="5%" />
             <Textos className="text-white text-sm font-medium" Texto="Rafael@gmail.com" />
             </section>
