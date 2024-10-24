@@ -1,20 +1,25 @@
+import { Request, Response } from "express";
 import User from "../models/userModel";
-import 
+import Loan from "../models/loanModel";
 
-exports.checkAndUpdateUserLevel = async (userId, userRole) => {
+interface CustomRequest extends Request {
+    user: {
+        id: number; 
+    };
+}
+
+export const checkAndUpdateUserLevel = async (userId: number, userRole: 'prestamista' | 'cliente'): Promise<void> => {
     try {
         const level = await User.getUserLevel(userId);
 
         if (userRole === 'prestamista') {
-            // Lógica para prestamistas: verificar pagos
-            const paymentsOnTime = await Loan.getPaymentsOnTime(userId); // Asegúrate de crear este método
-            if (paymentsOnTime >= 5) { // Por ejemplo, 5 pagos a tiempo para subir de nivel
+            const paymentsOnTime = await Loan.getPaymentsOnTime(userId); 
+            if (paymentsOnTime >= 5) {
                 await User.updateUserLevel(userId, level + 1);
             }
         } else if (userRole === 'cliente') {
-            // Lógica para clientes: contar préstamos realizados
-            const loansTaken = await Loan.getLoansTaken(userId); // Asegúrate de crear este método
-            if (loansTaken >= 3) { // 3 préstamos para subir de nivel
+            const loansTaken = await Loan.getLoansTaken(userId); 
+            if (loansTaken >= 3) {
                 await User.updateUserLevel(userId, level + 1);
             }
         }
@@ -22,20 +27,16 @@ exports.checkAndUpdateUserLevel = async (userId, userRole) => {
         console.error(err);
     }
 };
-[11:02 p.m., 23/10/2024] Jav: Archivo controllers/loanController.js:
 
-javascript
-Copiar código
-exports.acceptLoan = async (req, res) => {
-    const { loanId } = req.params;
-    const userId = req.user.id; // Suponiendo que tienes el ID del usuario autenticado
+export const acceptLoan = async (req: CustomRequest, res: Response) => {
+    const loanId: number = Number(req.params.loanId);
+    const userId = req.user.id;
 
     try {
         await Loan.acceptLoan(loanId);
-        // Aquí, después de aceptar un préstamo, verifica y actualiza el nivel del prestamista
         await checkAndUpdateUserLevel(userId, 'prestamista');
         res.status(200).json({ message: 'Loan accepted successfully!' });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ message: 'Internal Server Error' });
     }
 };
